@@ -1,0 +1,86 @@
+body {
+	
+    padding-top: 0px;
+}
+
+
+.navbar-brand {
+    padding: 1px 1px;
+}
+
+.navbar-brand>img {
+    height: 100%;
+}
+
+
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+
+.cointainer-textos{
+	background: ;
+    border-radius: 9px;
+    height: 40px;
+
+}
+
+.textos{
+	text-align: center;
+    color: #101010;
+    font-size: 25px;
+}
+
+.form_wrapper{
+  border: none;
+  border-bottom: 3px solid #101010;
+  border-top: 3px solid #101010;
+  text-align: center;
+  padding: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form_wrapper p{
+	color: #101010;
+  	font-size: 18px;
+  	font-family: 'Ubuntu', sans-serif;
+}
+
+.btn-login {
+	background-color: #FF5722  ;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #FF5722  ;
+}
+
+.btn-comentario {
+	background-color: #FF5722  ;
+	outline: none;
+	color: #fff;
+	font-size: 5px;
+	height: auto;
+	font-weight: normal;
+	padding: 5px 0;
+	text-transform: uppercase;
+	border-color: #FF5722  ;
+}
+
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #101010;
+	border-color: #FF5722;
+	border-width: 2px;
+}
+
+.desc_favor{
+	text-align: center;
+	font-size: 15px;
+	font-family: 'Ubuntu', sans-serif;
+}
