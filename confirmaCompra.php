@@ -31,14 +31,15 @@ Include "funciones/funciones.php";
   Include("header_connected_user.php");
   
   $mail = $_SESSION['email'];
-  $idUsuario = $_SESSION['idUsuario'];
-  $precio= precio(1);  
+  $idUsuario= $_SESSION['idUsuario'];
+  $precio= precio(1);
+
   $cantCreditoCompradas = $_SESSION['cantidadCreditoComprada'];
   $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
   if ($_SESSION['puedeComprar']) {
     $columnas = consultar_db($conexion, "UPDATE usuario SET cantCredito = (cantCredito + '$cantCreditoCompradas') WHERE mail = '$mail'");
-    $compra="INSERT INTO compracredito (idUsuario, cantidad, valorActual, fecha, idCredito) VALUES ('$idUsuario','$cantCreditoCompradas','$precio', CURRENT_TIMESTAMP();, 1)";
-	consultar_db($conexion,$compra);
+    $compra= "INSERT INTO compracredito (idUsuario, cantidad, valorActual, fecha, idCredito) VALUES ('$idUsuario', '$cantCreditoCompradas', '$precio', CURRENT_TIMESTAMP, 1)";
+    $consulta= consultar_db($conexion,$compra);
     $_SESSION['puedeComprar'] = false;
   }
 $res = consultar_db_columnas($conexion, "SELECT cantCredito FROM usuario WHERE mail = '$mail'");
@@ -51,7 +52,7 @@ $res = consultar_db_columnas($conexion, "SELECT cantCredito FROM usuario WHERE m
         <br>
   			<p> Compra Exitosa <br> Ahora tienes <?php echo($res['cantCredito']); ?> creditos </p>
   		</div>
-	</div>
+	</div>t
 </div>
 <br>
 <br>

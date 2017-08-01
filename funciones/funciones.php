@@ -122,6 +122,13 @@
 
 	}
 
+function precio($idCredito)
+    {
+        $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+        $res = consultar_db_columnas($conexion, "SELECT * FROM credito WHERE idCredito = '$idCredito'" );
+        return $res['valor'];
+    }
+
 	function datosFavor ($idPublicacion)
 	{
 		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
