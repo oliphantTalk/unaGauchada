@@ -18,6 +18,7 @@
           $sel.= " AND nombre LIKE '%$favor%' AND idCategoriaProducto=$cat"; //selecciona los que tienen ese nombre y esa categoria
             
           }
+
 		  /*SI HAGO UN COMENTARIO CAMBIA */
 
         $result= mysqli_query($link,$sel);
