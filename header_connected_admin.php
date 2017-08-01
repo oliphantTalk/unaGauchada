@@ -40,7 +40,7 @@
             <li><a href="publicarFavor.php">Ver listado de ganancias</a></li>
             <li><a href="comprarCredito.php">Ver ranking de usuarios</a></li>
             <li><a href="listarCategorias.php">Listar categorías</a></li>
-            <li><a href="comprarCredito.php">Listar reputación</a></li>
+            <li><a href="listarReputacion.php">Listar reputación</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="phpLogin/logout.php">Cerrar sesión</a></li>
           </ul>

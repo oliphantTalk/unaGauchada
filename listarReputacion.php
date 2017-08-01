@@ -41,9 +41,6 @@
   
 </div>
 
-      <br>
-      <br>
-
  	<div class="table-responsive">
 	<table class="table table-hover">
   <?php foreach ($reputaciones as $elem){
@@ -86,7 +83,7 @@
 
  <div>
 
-   <p style="text-align: center;"><a href="agregarReputaciones.php"> Agregar Reputacion</a></p> 
+   <p style="text-align: center;  font-family: 'Ubuntu', sans-serif;"><a href="agregarReputacion.php">  <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> AGREGAR REPUTACION</a> 
 
   </div>
   

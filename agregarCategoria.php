@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>unaGauchada</title>
+  <title>unaGauchada</title>
 
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,19 +16,19 @@
   
   
    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	 <link href="css/box_Login.css" rel="stylesheet" media="screen">
-	 <link href="main.css" rel="stylesheet" media="screen">
-	 <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+   <link href="css/box_Login.css" rel="stylesheet" media="screen">
+   <link href="main.css" rel="stylesheet" media="screen">
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 <script type="text/javascript">
   $(document).ready(function(){
  
     $('#editarFavor').on('click',function(e){
         //información del formulario
         e.preventDefault();
-        var nombre = ($("#titulo")).val();
+        var nombre = ($("#nombre")).val();
         var idCategoria = ($("#idCategoria")).val();
         idCategoria = parseInt(idCategoria);
-        var data = {'nombre': nombre, 'idCategoria': idCategoria};
+        var data = {'nombre': nombre,'idCategoria': idCategoria};
         $.ajax({
             url: 'actualizarCategoria.php',  
             type: 'POST',
@@ -39,7 +39,7 @@
             cache: false,
             dataType: 'html',
             success: function(data){
-              location.href = "misFavores.php";           }
+              location.href = "listarCategorias.php";           }
             //si ha ocurrido un error
             
         });//hacemos la petición ajax  
@@ -54,93 +54,22 @@
 
 <?php 
 session_start();
-$idFavor=$_GET['idPublicacion'];
 Include("funciones/funciones.php");
-Include("header_connected_user.php");
-$postulantes=postulantes($idFavor);
-$datosFavor=datosFavor($idFavor);
-$datos_localidad=datos_localidad();
-$datosCategoria=datosCategoria();
+Include("header_connected_admin.php");
 
 ?>
 <div class="container-fluid">
 <div class="row">
-	<div class="col-md-12 center-block form_wrapper">
-    <?php if (!empty($postulantes)){?>
-      <br>
-    <p> El favor posee postulantes, no puede ser modificado! <br>
-   </p>
-    <?php } else { ?>
+  <div class="col-md-12 center-block form_wrapper">
     <br>
-		<p> Modificar favor <br>
+    <p> Agregar categoria <br>
    </p> 
 
-	</div>
+  </div>
   
 </div>
 
-      <br>
-      <br>
-
-        <div  class="row">
-        <div class="col-md-8 col-md-offset-2">
-        <form enctype="multipart/form-data" class="modificarFavor" action="" method="post" name="upload_form" >
-        <div class=" col-md-10 col-md-offset-1">
-                  <input type="hidden" id="idPublicacion" value="<?php echo $idFavor?>">
-                  <div class="form-group ">
-                    <label for="exampleInputEmail1">Título</label>
-                    <input type="text" class="form-control" id= 'titulo' name="titulo" maxlength="32" value="<?php echo $datosFavor['titulo']?>" placeholder='<?php echo $datosFavor['titulo']?>' 
-                    >
-                  </div>
-                  
-
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Descripcion</label>
   
-                    <textarea class="form-control" id="descripcion" name="descripcion" value="<?php echo $datosFavor['descripcion']?>" placeholder='' 
-                    ><?php echo $datosFavor['descripcion']?></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fechaVencimiento"> Fecha de caducación:</label><br>
-                     <input type="date" class="form-control" id="vencimiento" min=<?php echo date('Y-m-d'); ?> name="vencimiento" step="1" value="<?php echo $datosFavor['fechaFin']?>" placeholder='<?php echo $datosFavor['fechaFin']?>' 
-                    >
-                  </div>
-
-                  <div class="form-group">
-                    <label for="categoria"> Categoria</label><br>
-                     <select class="form-control" name="cat" id="cat" 
-                    >>
-                        <?php 
-                            foreach ($datosCategoria as $elem){ 
-                        ?>     
-                          <option> <?php echo $elem->nombre; ?> </option>
-                        <?php } ?>
-                    </select>
-            
-    
-                     
-                  </div>
-                  <div class="form-group">
-                    <label for="localidad"> Localidad </label><br>
-                    <select class="form-control" name="loc" id="loc" 
-                    >>
-                        <?php 
-                            foreach ($datos_localidad as $elem){ 
-                        ?>     
-                          <option> <?php echo $elem->nombre; ?> </option>
-                        <?php } ?>
-                    </select>
-                 
-                     
-                  </div>
-
-                  <div class="form-group">
-                    <label>Subir imagen que acompañara la publicación (opcional)</label><br />
-                    <input name="archivo" class="file" type="file" id="imagen" /><br /><br />
-                   <!--<label for="exampleInputFile">Imagen</label>
-                    <input type="file" id="exampleInputFile">-->
-                  </div>
 
 
         <br>
@@ -151,7 +80,16 @@ $datosCategoria=datosCategoria();
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-               <button type="button" id="editarFavor" value="Subir imagen" class="form-control btn btn-login"/>Editar favor</button><br />
+               <td style="width: 50px;">
+                <form action= "addCategoria.php" method="post">
+                 <label for="exampleInputEmail1">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" maxlength="32" value="" placeholder="Nombre..">
+                <br>
+                <br>
+        
+                
+                 <input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-responder btn-xs " style="" value="Agregar"></td> <!-- el boton habia quedado más lindo, no sé qué pasó-->
+                </form>
                     
               <!--<input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-login" value="Publicar">-->
             </div>
@@ -164,11 +102,10 @@ $datosCategoria=datosCategoria();
     </div>
     
   </div>
-	<br>
-	<br>
+  <br>
+  <br>
 
   </form>
-<?php }?>
   <div class="messages"></div>
   </div>
   </div>

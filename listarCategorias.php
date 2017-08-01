@@ -42,6 +42,8 @@
 </div>
 
       <br>
+
+
       <br>
 
  	<div class="table-responsive">
@@ -53,12 +55,12 @@
         <tr>
           <td><?php echo $nombre ?></td>
           <td style="width: 80px;">
-           <form action= modificarCategoria.php method="post">
+           <form action= "modificarCategoria.php" method="post">
             <input type="hidden" name="idCategoria" id="idCategoria" value="<?php echo $elem->idCategoria ?>">
             <input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-responder btn-xs " style="" value="Modificar"></td>
            </form>
           <td style="width: 80px;">
-           <form action= eliminarCategoria.php method="post">
+           <form action= "eliminarCategoria.php" method="post">
             <input type="hidden" name="idCategoria" id="idCategoria" value="<?php echo $elem->idCategoria ?>">
             <input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-responder btn-xs " style="" value="Eliminar"></td>
            </form>
@@ -77,7 +79,7 @@
 
  <div>
 
-   <p style="text-align: center;"><a href="agregarCategoria.php"> Agregar Categoria</a></p> 
+  <p style="text-align: center;  font-family: 'Ubuntu', sans-serif;"><a href="agregarCategoria.php">  <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> AGREGAR CATEGORIA</a> 
 
   </div>
   

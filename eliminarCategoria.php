@@ -53,7 +53,7 @@ $categoria= datosCategoria();
             <br>
             <br> 
             
-             <a href="main.php" class="link"> Volver </a>
+             <a href="listarCategorias.php" class="link"> Volver </a>
         </div>
 
     </div>

@@ -25,17 +25,17 @@
 
 <?php 
 session_start();
-$idCategoria=$_POST['idCategoria'];
+$idReputacion=$_POST['idReputacion'];
 Include("funciones/funciones.php");
 Include("header_connected_admin.php");
-$categoria = categoria($idCategoria);
+$reputacion=reputacion($idReputacion);
 
 ?>
 <div class="container-fluid">
 <div class="row">
 	<div class="col-md-12 center-block form_wrapper">
     <br>
-		<p> Modificar categoria <br>
+		<p> Modificar reputacion <br>
    </p> 
 
 	</div>
@@ -54,9 +54,9 @@ $categoria = categoria($idCategoria);
           <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
                <td style="width: 50px;">
-                <form action= "actualizarCategoria.php" method="post">
+                <form action= "actualizarReputacion.php" method="post">
                  <label for="exampleInputEmail1">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" maxlength="32" value="<?php echo $categoria['nombre']?>" placeholder="<?php echo $categoria['nombre']?>">
+                <input type="text" class="form-control" id="nombre" name="nombre" maxlength="32" value="<?php echo $reputacion['nombre']?>" placeholder="<?php echo $reputacion['nombre']?>">
                 <br>
                 <br>
                 <input type="hidden" id="idCategoria" name="idCategoria" value="<?php echo $idCategoria?>">

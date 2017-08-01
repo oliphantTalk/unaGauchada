@@ -136,6 +136,12 @@
 		return $res;		
 	}
 
+	function existeCategoria($nombre){
+		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+		$res = consultar_db_columnas($conexion, "SELECT * FROM categoria WHERE baja = 0 AND nombre = '$nombre'" );
+		return $res;		
+	}
+
 	function datosReputaciones(){
 		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
 		$res = consultar_db_todas_columnas($conexion, "SELECT * FROM reputacion" );
@@ -144,7 +150,14 @@
 
 	function categoria($idCategoria){
 		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
-		$res = consultar_db_columnas($conexion, "SELECT * FROM categoria WHERE baja = 0 AND idCategoria = $idCategoria" );
+		$res = consultar_db_columnas($conexion, "SELECT * FROM categoria WHERE idCategoria = $idCategoria" );
+		return $res;		
+	}
+
+
+	function reputacion($idReputacion){
+		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+		$res = consultar_db_columnas($conexion, "SELECT * FROM reputacion WHERE baja = 0 AND idReputacion = $idReputacion" );
 		return $res;		
 	}
 
