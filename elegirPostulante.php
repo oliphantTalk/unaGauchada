@@ -51,16 +51,17 @@ $datosUsuario = datosUsuario($idGaucho);
     <div class="row">
         <div class="col-md-12 center-block form_wrapper">
             <br>
-            <p> Operacion Exitosa </p>
+            <p> <b>Operacion Exitosa </b> </p>
+            <br>
+            <br>
+            <p><i> Datos del gaucho para la comunicación</i></p>
+            <br>
+            <p>Mail: <?php echo $datosUsuario['mail']?> </p>
+            <p>Teléfono: <?php echo $datosUsuario['telefono']?></p>
+            <br>
             <br>
             <a href="main.php" class="link"> Volver </a>
             <br>
-            <br> 
-            <p> Datos para la comunicación</p>
-            <br>
-            <p>Mail gaucho: <?php echo $datosUsuario['mail']?> </p>
-            <br>
-            <p>	Teléfono Gaucho: <?php echo $datosUsuario['telefono']?></p>
         </div>
 
     </div>

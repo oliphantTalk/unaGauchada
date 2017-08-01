@@ -44,10 +44,10 @@
 	{	
 		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
 		if($idUsuario == 0){
-			$res = consultar_db_todas_columnas($conexion, "SELECT * FROM publicacion ORDER BY fechaInicio DESC" );	
+			$res = consultar_db_todas_columnas($conexion, "SELECT * FROM publicacion WHERE estado <> 3 ORDER BY fechaInicio DESC" );	
 		}
 		else{
-		$res = consultar_db_todas_columnas($conexion, "SELECT * FROM publicacion WHERE idUsuario = '$idUsuario' ORDER BY fechaInicio DESC");
+		$res = consultar_db_todas_columnas($conexion, "SELECT * FROM publicacion WHERE idUsuario = '$idUsuario' AND estado <> 3 ORDER BY fechaInicio DESC");
 		}
 		return $res;
 

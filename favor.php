@@ -63,10 +63,9 @@
 
 
                 var respuesta = ($('#respuesta').val());
-
-
                 var idP = ($('#idP').val());
                 var idU = ($('#idU').val());
+                
                 var data = {'respuesta': respuesta, 'idP': idP, 'idU': idU};
                 $.ajax({
                     url: 'actualizarPostulacion.php',
