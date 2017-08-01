@@ -77,7 +77,7 @@
 
  <div>
 
-   <p style="text-align: center;"><a href="agregarCategoria.php"> Agregar Categoria</a></p> 
+   <p style="text-align: center;"><a href="agregarCategoria.php"> Agreg Categoria</a></p> 
 
   </div>
   
