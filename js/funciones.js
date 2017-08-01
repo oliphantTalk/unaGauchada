@@ -17,17 +17,18 @@ $(document).ready(function(){
         //obtenemos el tipo de archivo image/png ejemplo
         var fileType = file.type;
         //mensaje con la información del archivo
-        showMessage("<span class='info'>Archivo para subir: "+fileName+", peso total: "+fileSize+" bytes.</span>");
+
+
     });
  
     //al enviar el formulario
     $('#botonSubeImagen').click(function(){
         //información del formulario
         var formData = new FormData($(".upload_form")[0]);
-        var message = ""; 
-        //hacemos la petición ajax  
+        var message = "";
+        //hacemos la petición ajax
         $.ajax({
-            url: 'upload.php',  
+            url: 'upload.php',
             type: 'POST',
             // Form data
             //datos del formulario
@@ -39,7 +40,7 @@ $(document).ready(function(){
             //mientras enviamos el archivo
             beforeSend: function(){
                 message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
-                showMessage(message)        
+                showMessage(message)
             },
             //una vez finalizado correctamente
             success: function(data){
@@ -47,7 +48,7 @@ $(document).ready(function(){
                 showMessage(message);
                 if(isImage(fileExtension))
                 {
-                    $(".showImage").html("<img src='files/"+data+"' />");
+                    $(".showImage").html("<img src='img/img_publicacion"+data+"' />");
                 }
             },
             //si ha ocurrido un error
@@ -57,7 +58,36 @@ $(document).ready(function(){
             }
         });
     });
-})
+
+
+$('#botonSubeImagen2').click(function(){
+    //información del formulario
+    var formData = new FormData($(".contact_form")[0]);
+    var message = "";
+
+
+    //hacemos la petición ajax
+    $.ajax({
+        url: 'uploadImgPerfil.php',
+        type: 'POST',
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+        },
+        error: function(){
+            message = $("<span class='error'>Ha ocurrido un error.</span>");
+            showMessage(message);
+
+        }
+
+    });
+});
+});
  
 //como la utilizamos demasiadas veces, creamos una función para 
 //evitar repetición de código
