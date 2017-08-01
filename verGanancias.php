@@ -24,11 +24,11 @@
 <?php
   session_start();
   Include("funciones/funciones.php");
-  Include("header_connected_user.php");
+  Include("header_connected_admin.php");
+    $fechaInicio=$_POST['fechaInicio'];
+    $fechaFin=$_POST['fechaFin'];
+    $ganancias = ganancias($fechaInicio, $fechaFin);
 
-  $ganancias = ganancias();
-
-    	
 
 ?>
 
@@ -37,7 +37,7 @@
 <div class="row">
 	<div class="col-md-12 center-block form_wrapper">
     <br>
-		<p>POSTULANTES<br>
+		<p>GANANCIAS OBTENIDAS ENTRE <?php echo $fechaInicio ?> Y <?php echo $fechaFin ?> <br>
     </p>
 	</div>
   
@@ -46,67 +46,52 @@
       <br>
       <br>
 
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <td style=""><b>Usuario</b></td>
+                <td><b>Cantidad</b></td>
+                <td><b>Precio</b></td>
+                <td><b>Fecha de compra</b></td>
+            </tr>
+
  <?php
- 	foreach ($publicaciones as $elem){ ?>
- 	<div class="table-responsive">
-	<table class="table table-hover">
-    <tr>
-        <td style="text-align: left;"><b><?php echo $elem->titulo ?></b></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <?php
-    $estado= $elem->estado;
-
-    if ($estado == 1){
-      $gaucho = datosUsuario($elem->idGaucho);
-  ?>
-      <tr>
-        <td style="text-align: left;">Se eligió como gaucho a <?php echo $gaucho['nombre']?></td>
-        <td></td>
-      </tr>
-   <?php } else {
-  
-
- 		  $idP=$elem->idPublicacion;
-
-  		$postulantes = postulantes($idP);
-  		if(empty($postulantes)){ ?>
-    			<tr> <td style="text-align: center;">No existen postulantes para esta publicación</td>
-    			<td></td>  </tr>
-
-    	<?php	} else {
-  	
-    	foreach ($postulantes as $elem2){
-    		$usuario= datosUsuario ($elem2->idUsuario);
-        $comentPostulante = $elem2->comentario;
-    		
-  ?>
+ 	foreach ($ganancias as $elem){
+    $usuario= datosUsuario($elem->idUsuario);?>
 
 
     <tr>
-    	<td style="text-align: center;"><a href="verHistorialDelGaucho.php?idUsuario=<?php echo $usuario['idUsuario']?>"> <?php echo $usuario['nombre']. ' ' . $usuario['apellido'] ?> </a></td> 
-    	<td style="width: 50px;">
-      <form action= elegirPostulante.php method="post">
-      <input type="hidden" name="idGaucho" id="idGaucho" value="<?php echo $usuario['idUsuario']?>">
-      <input type="hidden" name="idPublicacion" id="idPublicacion" value="<?php echo $elem->idPublicacion?>">
-
-      <input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-responder btn-xs " style="" value="Aceptar"></td>
-      </form>
-     <td style="text-align: center;"><?php echo $comentPostulante ?> </td> 
+        <td> <?php echo $usuario['nombre']  ?></td>
+    	<td> <?php echo $elem->cantidad  ?> </td>
+        <td> $<?php echo $elem->valorActual  ?> </td>
+        <td> <?php echo $elem->fecha  ?> </td>
 	</tr>
 
-
-		 	
-	
-
-	<br>
-	<br>
 <?php 
 } ?>
   </table>
+
+
+
+
 <?php
-}
-}
-}	?>
+
+$gananciasTotales= gananciasTotalesEntre($fechaInicio,$fechaFin); ?>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 center-block form_wrapper">
+                    <br>
+                    <p>GANANCIAS TOTALES: $<?php echo $gananciasTotales[0]->Total; ?>
+                    </p>
+                </div>
+
+            </div>
+
+
+
+
+
+
 	</div>

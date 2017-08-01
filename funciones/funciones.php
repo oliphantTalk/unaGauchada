@@ -175,6 +175,20 @@
 		return $res;		
 	}
 
+    function ganancias($fechaInicio, $fechaFin)
+    {
+        $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+        $res = consultar_db_todas_columnas($conexion, "SELECT * FROM compracredito WHERE $fechaInicio < fecha < $fechaFin  " );
+        return $res;
+    }
+
+    function gananciasTotalesEntre($fechaInicio,$fechaFin)
+    {
+        $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+        $res = consultar_db_todas_columnas($conexion, "SELECT *, SUM(cantidad*valorActual) as 'Total' FROM compracredito WHERE $fechaInicio < fecha < $fechaFin  " );
+        return $res;
+    }
+
 
 	function reputacion($idReputacion){
 		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
