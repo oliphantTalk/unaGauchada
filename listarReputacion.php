@@ -26,7 +26,7 @@
   Include("funciones/funciones.php");
   Include("header_connected_admin.php");
 
-  $categorias = datosCategoria();
+  $reputaciones = datosReputaciones();
 
 ?>
 
@@ -35,7 +35,7 @@
 <div class="row">
 	<div class="col-md-12 center-block form_wrapper">
     <br>
-		<p>Categorías<br>
+		<p>Reputaciones<br>
     </p>
 	</div>
   
@@ -46,20 +46,29 @@
 
  	<div class="table-responsive">
 	<table class="table table-hover">
-    <?php foreach ($categorias as $elem){ 
-          $nombre=$elem->nombre;
+  <?php foreach ($reputaciones as $elem){
+            $nombre=$elem->nombre;
+            $min=$elem->valormin;
+            if (empty($min)){
+              $min="<";
+            }
+
+            $max=$elem->valormax;
     ?>
     <tbody>
         <tr>
           <td><?php echo $nombre ?></td>
+          <br>
+          <br>
+          <td>[<?php echo $min ?>;<?php echo $max?>]</td>
           <td style="width: 80px;">
-           <form action= modificarCategoria.php method="post">
-            <input type="hidden" name="idCategoria" id="idCategoria" value="<?php echo $elem->idCategoria ?>">
+           <form action= modificarReputaciones.php method="post">
+            <input type="hidden" name="idReputacion" id="idReputacion" value="<?php echo $elem->idReputacion ?>">
             <input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-responder btn-xs " style="" value="Modificar"></td>
            </form>
           <td style="width: 80px;">
-           <form action= eliminarCategoria.php method="post">
-            <input type="hidden" name="idCategoria" id="idCategoria" value="<?php echo $elem->idCategoria ?>">
+           <form action= eliminarReputaciones.php method="post">
+            <input type="hidden" name="idReputacion" id="idReputacion" value="<?php echo $elem->idReputacion ?>">
             <input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-responder btn-xs " style="" value="Eliminar"></td>
            </form>
         </tr>
@@ -77,7 +86,7 @@
 
  <div>
 
-   <p style="text-align: center;"><a href="agregarCategoria.php"> Agregar Categoria</a></p> 
+   <p style="text-align: center;"><a href="agregarReputaciones.php"> Agregar Reputacion</a></p> 
 
   </div>
   

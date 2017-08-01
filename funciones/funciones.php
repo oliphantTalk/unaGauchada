@@ -136,6 +136,12 @@
 		return $res;		
 	}
 
+	function datosReputaciones(){
+		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+		$res = consultar_db_todas_columnas($conexion, "SELECT * FROM reputacion" );
+		return $res;		
+	}
+
 	function categoria($idCategoria){
 		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
 		$res = consultar_db_columnas($conexion, "SELECT * FROM categoria WHERE baja = 0 AND idCategoria = $idCategoria" );
