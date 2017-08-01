@@ -19,7 +19,7 @@ $(document).ready(function(){
         //mensaje con la información del archivo
         showMessage("<span class='info'>Archivo para subir: "+fileName+", peso total: "+fileSize+" bytes.</span>");
     });
- 
+    
     //al enviar el formulario
     $('#botonSubeImagen').click(function(){
         //información del formulario
@@ -56,8 +56,33 @@ $(document).ready(function(){
                 showMessage(message);
             }
         });
+        $('#botonSubeImagen2').click(function(){
+    //información del formulario
+    var formData = new FormData($(".contact_form")[0]);
+    var message = "";
+
+
+    //hacemos la petición ajax
+    $.ajax({
+        url: 'uploadImgPerfil.php',
+        type: 'POST',
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+        },
+        error: function(){
+            message = $("<span class='error'>Ha ocurrido un error.</span>");
+            showMessage(message);
+
+        }
     });
-})
+
+});
  
 //como la utilizamos demasiadas veces, creamos una función para 
 //evitar repetición de código

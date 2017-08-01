@@ -122,11 +122,25 @@
 
 	}
 
-function precio($idCredito)
+	function usuariosRanking()
+	{
+		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+		$res = consultar_db_todas_columnas($conexion, "SELECT * FROM usuario ORDER BY puntaje DESC");
+		return $res;
+	}
+
+	function precio($idCredito)
     {
         $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
         $res = consultar_db_columnas($conexion, "SELECT * FROM credito WHERE idCredito = '$idCredito'" );
         return $res['valor'];
+    }
+
+    function reputacionUsuario($puntaje)
+    {
+        $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+        $res = consultar_db_columnas($conexion, "SELECT * FROM reputacion WHERE '$puntaje' BETWEEN valormin AND valormax");
+        return $res;
     }
 
 	function datosFavor ($idPublicacion)
