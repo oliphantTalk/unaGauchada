@@ -35,7 +35,7 @@ Include("header_connected_admin.php");
     <div class="row">
         <div class="col-md-12 center-block form_wrapper">
             <br>
-            <p>Ganancias<br> Ingrese el rango de fechas en el cual desee ver el listado de ganancias
+            <p>Ganancias<br> Ingrese el rango de fechas en el cual desea ver el listado de ganancias
             </p>
         </div>
 

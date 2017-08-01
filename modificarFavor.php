@@ -155,8 +155,8 @@ $datosCategoria=datosCategoria();
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-               <button type="button" id="editarFavor" value="Subir imagen" class="form-control btn btn-login"/>Editar favor</button><br />
-                    
+                <button id="botonSubeImagen" value="Subir imagen" class="form-control btn btn-login"/>Subir Imagen</button><br />
+                <button type="button" id="editarFavor" value="Subir imagen" class="form-control btn btn-login"/>Editar favor</button><br />
               <!--<input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-login" value="Publicar">-->
             </div>
           </div>
