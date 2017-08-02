@@ -31,6 +31,8 @@
 Include("funciones/funciones.php");
 Include("header_connected_user.php");
 $datosUsuario = datosUsuario($_SESSION['idUsuario']);
+$reputacion=reputacionUsuario($datosUsuario['puntaje']);
+
 
 ?>
 
@@ -62,6 +64,8 @@ $datosUsuario = datosUsuario($_SESSION['idUsuario']);
                 <p><b>Código Postal:</b> <?php echo $datosUsuario['codPostal'] ?></p>
                 <p><b>Mail:</b> <?php echo $datosUsuario['mail'] ?></p>
                 <p><b>Créditos:</b> <?php echo $datosUsuario['cantCredito'] .' '; if($datosUsuario['cantCredito']==0){echo ('--> ' . "<a class='btn-link' href='comprarCredito.php' target='_blank'>Comprar Creditos</a>");}?></p>
+                <p><b>Puntaje:</b> <?php echo $datosUsuario['puntaje'] ?></p>
+                <p><b>Reputacion:</b> <?php echo $reputacion['nombre'] ?></p>
                   <p><a class="btn-link" href="verPostulantes.php">Ver mis Postulantes</a></p>
                   <p><a class="btn-link" href="verHistorialPostulaciones.php?idUsuario=<?php echo $datosUsuario['idUsuario']?>">Ver mi historial de Postulaciones</a></p>
                   <p><a class="btn-link" href="#">Ver mi Reputacion</a></p>

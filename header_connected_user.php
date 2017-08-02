@@ -109,7 +109,7 @@
           </ul>
         </li>
         	<p class="navbar-text">Créditos: <?php echo cantCredito($_SESSION['idUsuario'])['cantCredito'];?> </p>
-          <li><a href="VerInformacion.php">Sobre Nosotros</a></li>
+          <li><a href="verInformacion.php">Sobre Nosotros</a></li>
 	      </ul>
 	     
 	    </div>

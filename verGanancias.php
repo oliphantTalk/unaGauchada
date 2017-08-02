@@ -25,12 +25,24 @@
   session_start();
   Include("funciones/funciones.php");
   Include("header_connected_admin.php");
-    $fechaInicio=$_POST['fechaInicio'];
-    $fechaFin=$_POST['fechaFin'];
-    $ganancias = ganancias($fechaInicio, $fechaFin);
+  $fechaInicio=$_POST['fechaInicio'];
+  $fechaFin=$_POST['fechaFin'];
+  $ganancias = ganancias($fechaInicio, $fechaFin);
+  if (empty($ganancias)){?>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 center-block form_wrapper">
+            <br>
+            <p> No existen ganancias en el rango de fecha ingresado </p>
+            <br>
+            <a href="ganancias.php" class="link"> Volver </a>
+        </div>
 
+    </div>
 
-?>
+</div>
+
+ <?php }else{ ?>
 
 
 <div class="container-fluid">
@@ -95,3 +107,4 @@ $gananciasTotales= gananciasTotalesEntre($fechaInicio,$fechaFin); ?>
 
 
 	</div>
+<?php }?>

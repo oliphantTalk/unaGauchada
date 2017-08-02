@@ -52,7 +52,7 @@ $res = consultar_db_columnas($conexion, "SELECT cantCredito FROM usuario WHERE m
         <br>
   			<p> Compra Exitosa <br> Ahora tienes <?php echo($res['cantCredito']); ?> creditos </p>
   		</div>
-	</div>t
+	</div>
 </div>
 <br>
 <br>

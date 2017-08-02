@@ -30,16 +30,9 @@
     }  
   } else{
     Include("header.php");
-  } ?>
+  }
 
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 center-block form_wrapper">
-        <br>
-
-  
-  <?php
-	$datosPublicacion = publicacionesValidas(0); #si se le pasa 0 devuelve de cualquier usuario.
+  $datosPublicacion = publicacionesValidas(0); #si se le pasa 0 devuelve de cualquier usuario.
   if(isset($_SESSION['loggedin'])){
     $misPostulaciones=postulacionesSoyGaucho($_SESSION['idUsuario']);
     foreach ($misPostulaciones as $elem) {
@@ -47,23 +40,21 @@
       $idP=$elem->idPublicacion;
       $idU=$elem->idUsuario;
       $consulta= "UPDATE postulacion SET estado = 3 WHERE idPublicacion= '$idP' AND idUsuario= '$idU'";
-    
-
-
-	
-
-
-?>
-
-     
-        <p>Has sido elegido como gaucho en el favor <?php echo $datosP['titulo'] ?> </p>
-        <?php
+      ?>
+      <p><b>Has sido elegido como gaucho en el favor </b><i>'<?php echo $datosP['titulo'] ?>'</i> </p>
+      <?php
         $conexion=conectar_db("localhost", "root", "pepa", "unagauchada");
-
         consultar_db($conexion,$consulta);
-      }
     }
-        ?>
+  }
+      ?>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 center-block form_wrapper">
+        <br>
+
+  
+  
         	<?php if(isset($_SESSION['username'])){ ?> <p> Bienvenido/a <?php echo $_SESSION['username'];}?>
   			<p> Un lugar donde tus favores encontraran un alma caritativa <br> Haz favores y gana puntos, seguro que tienes una habilidad o un objeto que puedes ofrecer a los demás usuarios </p>
   		</div>

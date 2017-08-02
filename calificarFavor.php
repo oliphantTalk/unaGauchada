@@ -10,9 +10,10 @@ if ($calificacion=='1'){
 	$consulta= "UPDATE usuario SET puntaje=(puntaje+1), credito=(credito+1)  WHERE idUsuario = '$idGaucho'";
 
 }elseif ($calificacion=='3') {
-	$consulta= "UPDATE usuario SET puntaje=(puntaje-2) WHERE idUsuario = '$idUsuario'";
+	$consulta= "UPDATE usuario SET puntaje=(puntaje-2) WHERE idUsuario = '$idGaucho'";
 }
 $consultaCalificacion= "UPDATE publicacion SET idCalificacion= '$calificacion', ComentarioCalif='$comentario'  WHERE idPublicacion= '$idPublicacion'";
 consultar_db($conexion,$consulta);
 consultar_db($conexion,$consultaCalificacion);
+header("Location: misFavores.php");
 ?>

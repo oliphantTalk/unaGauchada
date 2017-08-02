@@ -9,14 +9,15 @@ if(isset($_SESSION['loggedin'])){
     $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
     $consulta = "UPDATE publicacion SET estado='$valor_despublicado' WHERE idPublicacion = '$idFavor'";
     $postulantes = postulantes($idFavor);
+    $gaucho=$datosFavor['idGaucho'];
     if(empty($postulantes)){
         $consulta2= "UPDATE usuario SET cantCredito=(cantCredito + 1) WHERE idUsuario = '$idUsuario'";
         consultar_db($conexion,$consulta2);
-    }elseif($datosFavor['idGaucho']=null){
-            $consulta3= "UPDATE postulacion SET estado = 4 WHERE idPublicacion='$idPublicacion'  ";
+    }elseif($gaucho=null){
+            $consulta3= "UPDATE postulacion SET estado = 4 WHERE idPublicacion='$idFavor'  ";
             consultar_db($conexion,$consulta3);
     }else{
-        $consulta4= "UPDATE postulacion SET estado = 4  WHERE idPublicacion=$idPublicacion AND idUsuario='$idGaucho'";
+        $consulta4= "UPDATE postulacion SET estado = 4  WHERE idPublicacion='$idFavor' AND idUsuario='$gaucho'";
         consultar_db($conexion,$consulta4);
     }
     consultar_db($conexion, $consulta);

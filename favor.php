@@ -141,19 +141,17 @@
           <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
               <?php if ($publicacion['idUsuario'] == $_SESSION['idUsuario']){
-                        if ($publicacion['idCalificacion'] = 0) {
-                          # code...
-                ?>
-                         
+                        if ($publicacion['idGaucho']<> null && $publicacion['idCalificacion'] == 0) {?>
 
                               <form action="calificarFavor.php" method="POST"> 
-                                <input type="text" id="comentario" name="comentario" placeholder="Explica el porque de tu calificacion... ">
+                                <input type="text" id="comentario" name="comentario" placeholder="Explica el porqué de tu calificación... ">
                                 <input type="hidden" name="idPublicacion" value="<?php echo $idPublicacion ?>">
                                 <input type="hidden" name="idUsuario" value="<?php echo $publicacion['idGaucho'] ?>">
                                 <select name="calificacion" id="calificacion"> 
                                     <option value="1">Bien</option> 
                                     <option value="2">Neutro</option>
-                                    <option value="3">Mal</option> </select>
+                                    <option value="3">Mal</option>
+                                 </select>
                                 <button type="submit" name="calificarFavor" id="calificarFavor" tabindex="4" class="form-control btn btn-responder btn-xs "  value="Calificar">Calificar</button>
                               </form>
                               <?php } ?>
