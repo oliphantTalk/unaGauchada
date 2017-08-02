@@ -46,18 +46,28 @@
       <br>
       <br>
 
+ <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <td style=""><b>Usuario</b></td>
+                <td><b>Puntaje</b></td>
+                <td><b>Reputacion</b></td>
+            </tr>
+
  <?php
- 	foreach ($usuarios as $elem){
-    $nombre= $elem->nombre;
-    $apellido=$elem->apellido;
-    $puntaje= $elem->puntaje;
-    $reputacion=reputacionUsuario($puntaje);		
-  ?>
+   $usuarios=usuariosRanking();
+  foreach ($usuarios as $elem){
+    $reputacion=reputacionUsuario($elem->puntaje);  
+?>
 
 
     <tr>
-    	<td ><?php echo $nombre. ' ' . $apellido ?></td>
-      <td><?php echo $puntaje?></td>
-      <td><?php echo $reputacion['nombre']?></td>
-	</tr>
-  <?php }?>
+        <td> <?php echo $elem->nombre. ' ' . $elem->apellido   ?></td>
+        <td> <?php echo $elem->puntaje  ?> </td>
+        <td> <?php echo $reputacion['nombre']  ?> </td>
+  </tr>
+
+<?php 
+} ?>
+  </table>
+

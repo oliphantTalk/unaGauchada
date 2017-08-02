@@ -4,19 +4,14 @@ if(isset($_SESSION['loggedin'])){
     Include("funciones/funciones.php");
     $idUsuario = $_SESSION['idUsuario'];
     $nombreNuevo = $_POST['nombre'];
-    $_SESSION['username'] = $nombreNuevo;
     $apellidoNuevo = $_POST['apellido'];
     $cumpleaniosNuevo = $_POST['cumpleanios'];
     $telNuevo = $_POST['telefono'];
     $codPostalNuevo = $_POST['codPostal'];
-    if(!empty($_FILES['archivo']['name'])){
-        $dir_destino = 'img/perfil_usuarios/';
-        $imagen_subida = $dir_destino . basename($_FILES['archivo']['name']);
-    }
 
 
     $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
-    $consulta = "UPDATE usuario SET nombre='$nombreNuevo',apellido='$apellidoNuevo',fecha_nac='$cumpleaniosNuevo',telefono='$telNuevo',fotoPerfil='$imagen_subida',codPostal='$codPostalNuevo' WHERE idUsuario = '$idUsuario'";
+    $consulta = "UPDATE usuario SET nombre='$nombreNuevo',apellido='$apellidoNuevo',fecha_nac='$cumpleaniosNuevo',telefono='$telNuevo',codPostal='$codPostalNuevo' WHERE idUsuario = '$idUsuario'";
     consultar_db($conexion, $consulta);
 
     }
