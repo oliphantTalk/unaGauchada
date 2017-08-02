@@ -47,7 +47,7 @@
       <td><b>Estado</b></td>
     </thead>
     <?php foreach ($postulaciones as $elem){ 
-          $idEstado=$elem->idEstado;
+          $idEstado=$elem->estado;
           $estado = estado($idEstado);
 
           $idPublicacion = $elem->idPublicacion;
