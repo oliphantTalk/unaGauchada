@@ -8,47 +8,50 @@
   
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset = "utf-8">
+
   <script src="js/jquery-3.2.1.min.js"></script> <!-- Importante llamar antes a jQuery para que funcione bootstrap.min.js-->
    <script src="js/bootstrap.min.js"></script>
    <script src="js/bootstrap.js"></script>
-   <script type="text/javascript" src="js/funciones.js"></script>
+    <script type="text/javascript" src="js/funciones.js?nocache="></script>
    
   
   
    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	 <link href="css/box_Login.css" rel="stylesheet" media="screen">
+
 	 <link href="main.css" rel="stylesheet" media="screen">
 	 <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 <script type="text/javascript">
   $(document).ready(function(){
- 
-    $('#editarFavor').on('click',function(e){
-        //información del formulario
-        e.preventDefault();
-        var titulo = ($("#titulo")).val();
-        var descripcion = ($("#descripcion")).val();
-        var vencimiento = ($("#vencimiento")).val();
-        var cat = ($("#cat")).val();
-        var loc = ($("#loc")).val();
-        var idPublicacion = ($("#idPublicacion")).val();
-        idPublicacion = parseInt(idPublicacion);
-        var data = {'titulo': titulo, 'descripcion': descripcion, 'vencimiento': vencimiento, 'cat': cat, 'loc': loc, 'idPublicacion': idPublicacion};
-        $.ajax({
-            url: 'actualizarFavor.php',  
-            type: 'POST',
-            // Form data
-            //datos del formulario
-            data: data,
-            //necesario para subir archivos via ajax
-            cache: false,
-            dataType: 'html',
-            success: function(data){
-              location.href = "misFavores.php";           }
-            //si ha ocurrido un error
-            
-        });//hacemos la petición ajax  
-        
-    });
+
+   $('.editarFavor').on('click',function(e){
+          //información del formulario
+          e.preventDefault();
+          var titulo = ($("#titulo")).val();
+          var descripcion = ($("#descripcion")).val();
+          var vencimiento = ($("#vencimiento")).val();
+          var cat = ($("#cat")).val();
+          var loc = ($("#loc")).val();
+          var idPublicacion = ($("#idPublicacion")).val();
+          var imagenSubida = ($("#imgFavor")).val();
+
+          idPublicacion = parseInt(idPublicacion);
+          var data = {'titulo': titulo, 'descripcion': descripcion, 'vencimiento': vencimiento, 'cat': cat, 'loc': loc, 'idPublicacion': idPublicacion, 'imagenSubida' : imagenSubida};
+          $.ajax({
+              url: 'actualizarFavor.php',
+              type: 'POST',
+              // Form data
+              //datos del formulario
+              data: data,
+              //necesario para subir archivos via ajax
+              cache: false,
+              dataType: 'html',
+              success: function(data){
+                  location.href = "misFavores.php";           }
+              //si ha ocurrido un error
+
+          });//hacemos la petición ajax
+
+      });
 });
 
 </script>
@@ -88,7 +91,7 @@ $datosCategoria=datosCategoria();
 
         <div  class="row">
         <div class="col-md-8 col-md-offset-2">
-        <form enctype="multipart/form-data" class="modificarFavor" action="" method="post" name="upload_form" >
+        <form enctype="multipart/form-data" class="upload_form" action="" method="post" name="upload_form" >
         <div class=" col-md-10 col-md-offset-1">
                   <input type="hidden" id="idPublicacion" value="<?php echo $idFavor?>">
                   <div class="form-group ">
@@ -107,14 +110,14 @@ $datosCategoria=datosCategoria();
 
                   <div class="form-group">
                     <label for="fechaVencimiento"> Fecha de caducación:</label><br>
-                     <input type="date" class="form-control" id="vencimiento" min=<?php echo date('Y-m-d'); ?> name="vencimiento" step="1" value="<?php echo $datosFavor['fechaFin']?>" placeholder='<?php echo $datosFavor['fechaFin']?>' 
+                     <input type="date" class="form-control" id="vencimiento" min=<?php echo date('Y-m-d'); ?> name="vencimiento" step="1" value="<?php echo $datosFavor['fechaFin']?>" placeholder='<?php echo $datosFavor['fechaFin']?>'
                     >
                   </div>
 
                   <div class="form-group">
                     <label for="categoria"> Categoria</label><br>
                      <select class="form-control" name="cat" id="cat" 
-                    >>
+                    >
                         <?php 
                             foreach ($datosCategoria as $elem){ 
                         ?>     
@@ -128,41 +131,44 @@ $datosCategoria=datosCategoria();
                   <div class="form-group">
                     <label for="localidad"> Localidad </label><br>
                     <select class="form-control" name="loc" id="loc" 
-                    >>
+                    >
                         <?php 
                             foreach ($datos_localidad as $elem){ 
                         ?>     
                           <option> <?php echo $elem->nombre; ?> </option>
                         <?php } ?>
                     </select>
-                 
+
                      
                   </div>
 
                   <div class="form-group">
-                    <label>Subir imagen que acompañara la publicación (opcional)</label><br />
+                    <label>Cambiar imagen que acompañara la publicación (opcional)</label><br />
                     <input name="archivo" class="file" type="file" id="imagen" /><br /><br />
                    <!--<label for="exampleInputFile">Imagen</label>
                     <input type="file" id="exampleInputFile">-->
                   </div>
+            <div class="form-group">
+                <input type="hidden" id="imgFavor" name="imgFavor" value="<?php echo $datosFavor['imagen']?>">
+                <img class='perfil' style='width:40%' src="<?php echo $datosFavor['imagen']?>"  onerror="this.onerror=null;this.src='img/icon_gauchada.png'; this.style='width:30%'">
 
+            </div>
 
         <br>
-        <br>          
+        <br>
         </div>
 
 
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <input id="botonSubeImagen" value="Subir imagen" class="form-control btn btn-login"/>Subir Imagen</button><br />
-                <button type="button" name= "botonSubeImagen2" id="editarFavor" value="Subir imagen" class="form-control btn btn-login"/>Editar favor</button><br />
+               <button type="button" id="botonSubeImagen" value="Subir imagen" class="editarFavor form-control btn btn-login"/>Editar favor</button><br />
               <!--<input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-login" value="Publicar">-->
             </div>
           </div>
         </div>
-        
-     
+
+
 
         </div>
     </div>
