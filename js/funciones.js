@@ -54,6 +54,7 @@ $(document).ready(function(){
             {
                 $(".showImage").html("<img src='img/img_publicacion"+data+"' />");
             }
+<<<<<<< HEAD
         },
         //si ha ocurrido un error
         error: function(){
@@ -68,8 +69,40 @@ $('#botonSubeImagen2').click(function(){
     //información del formulario
     var formData = new FormData($(".contact_form")[0]);
     var message = "";
+=======
+        });
+        $('#botonSubeImagen2').click(function(){
+    //información del formulario
+    var formData = new FormData($(".contact_form")[0]);
+    var message = "";
 
 
+    //hacemos la petición ajax
+    $.ajax({
+        url: 'uploadImgPerfil.php',
+        type: 'POST',
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+        },
+        error: function(){
+            message = $("<span class='error'>Ha ocurrido un error.</span>");
+            showMessage(message);
+>>>>>>> 6b74a163ff7df5537a94111f5f0636a9cbf80a14
+
+        }
+    });
+$('#botonSubeImagen2').click(function(){
+    //información del formulario
+    var formData = new FormData($(".contact_form")[0]);
+    var message = "";
+
+<<<<<<< HEAD
     //hacemos la petición ajax
     $.ajax({
         url: 'uploadImgPerfil.php',
@@ -90,6 +123,29 @@ error: function(){
 }
 
 });
+=======
+
+    //hacemos la petición ajax
+    $.ajax({
+        url: 'uploadImgPerfil.php',
+        type: 'POST',
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+        },
+        error: function(){
+            message = $("<span class='error'>Ha ocurrido un error.</span>");
+            showMessage(message);
+
+        }
+
+    });
+>>>>>>> 6b74a163ff7df5537a94111f5f0636a9cbf80a14
 });
 });
 
