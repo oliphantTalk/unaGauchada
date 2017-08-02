@@ -16,7 +16,6 @@
 
 	 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 	 <link href="css/box_Login.css" rel="stylesheet" media="screen">
-   
 	 <link href="main.css" rel="stylesheet" media="screen">
 	 <link href="fonts/fuenteUbuntu.woff2" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
