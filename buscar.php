@@ -19,7 +19,7 @@
             
           }
 
-		  /*SI HAGO UN COMENTARIO CAMBIA */
+		  /*SI HAGO UN COMENTARIO CAMBIA OTRA VEZ*/
 
         $result= mysqli_query($link,$sel);
         $resultado = mysqli_query($link,$sel." LIMIT $empiezo, 10");
