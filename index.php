@@ -34,7 +34,10 @@
 
   $datosPublicacion = publicacionesValidas(0); #si se le pasa 0 devuelve de cualquier usuario.
   if(isset($_SESSION['loggedin'])){
-    $misPostulaciones=postulacionesSoyGaucho($_SESSION['idUsuario']);
+    $miID=$_SESSION['idUsuario'];
+    $misPostulaciones=postulacionesSoyGaucho($miID);
+    $postulacionDespublicada=postulacionDespublicada($miID);
+    $conexion=conectar_db("localhost", "root", "pepa", "unagauchada");
     foreach ($misPostulaciones as $elem) {
       $datosP=datosFavor($elem->idPublicacion);
       $idP=$elem->idPublicacion;
@@ -43,8 +46,22 @@
       ?>
       <p><b>Has sido elegido como gaucho en el favor </b><i>'<?php echo $datosP['titulo'] ?>'</i> </p>
       <?php
-        $conexion=conectar_db("localhost", "root", "pepa", "unagauchada");
         consultar_db($conexion,$consulta);
+    }
+    foreach ($postulacionDespublicada as $elem2) {
+      $publi=datosFavor($elem2->idPublicacion);
+      $idPubli=$elem2->idPublicacion;
+      $idUsu=$elem2->idUsuario;
+      $consulta= "UPDATE postulacion SET estado = 3 WHERE idPublicacion= '$idPubli' AND idUsuario= '$idUsu'";
+      if ( $publi['idGaucho'] == null ){?>
+      <p style="text-align: center;"><b> Se ha despublicado el favor: </b><i>'<?php echo $publi['titulo'] ?>'</i> <b>en el que te habías postulado </b></p>
+      <?php 
+      consultar_db($conexion,$consulta);
+      } elseif($publi['idGaucho'] == $miID){?>
+      <p style="text-align: center;"><b> Se ha despublicado el favor: </b><i>'<?php echo $publi['titulo'] ?>'</i><b> en el que habías sido elegido como gaucho</b></p>
+      <?php 
+      consultar_db($conexion,$consulta);
+      }  
     }
   }
       ?>

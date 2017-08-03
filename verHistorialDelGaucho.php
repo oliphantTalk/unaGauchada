@@ -24,9 +24,11 @@
 <?php
   session_start();
   Include("funciones/funciones.php");
-  Include("header.php");
-
-  $publicaciones = historial($_GET['idUsuario']);
+  Include("header_connected_user.php");
+  $idU=$_GET['idUsuario']; 
+  $publicaciones = historial($idU);
+  $datosUsuario = datosUsuario($_SESSION['idUsuario']);
+  $reputacion=reputacionUsuario($datosUsuario['puntaje']);
 
 ?>
 
@@ -35,14 +37,25 @@
 <div class="row">
 	<div class="col-md-12 center-block form_wrapper">
     <br>
-		<p>Historial del Gaucho<br>
-    </p>
+		<p>Historial del Gaucho<br>   </p>
 	</div>
+
+    <div style="text-align: center; font-family:'Ubuntu', sans-serif; ">
+
+    <div class="col-md-6">
+    <br>
+      <p><b>REPUTACION: <?php $reputacion['nombre'] ?> </b></p>
+    </div>
+    <div class="col-md-6">
+      <br>
+      <p><b>PUNTAJE: <?php $datosUsuario['puntaje'] ?> </b></p>
+    </div>  
+      
+    </div>
   
 </div>
 
-      <br>
-      <br>
+   <br>  
 
  	<div class="table-responsive">
 	<table class="table table-hover">

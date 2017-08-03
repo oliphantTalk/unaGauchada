@@ -103,6 +103,13 @@
 		return $res;
 	}
 
+	function postulacionDespublicada($idUsuario)
+	{
+		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
+		$res = consultar_db_todas_columnas($conexion, "SELECT * FROM postulacion WHERE idUsuario = '$idUsuario' AND estado = 5");
+		return $res;
+	}
+
 	function calificacion($idCalificacion)
 	{
 		$conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
@@ -181,14 +188,14 @@
     function ganancias($fechaInicio, $fechaFin)
     {
         $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
-        $res = consultar_db_todas_columnas($conexion, "SELECT * FROM compracredito WHERE $fechaInicio < fecha < $fechaFin  " );
+        $res = consultar_db_todas_columnas($conexion, "SELECT * FROM compracredito WHERE fecha BETWEEN '$fechaInicio' AND '$fechaFin'" );
         return $res;
     }
 
     function gananciasTotalesEntre($fechaInicio,$fechaFin)
     {
         $conexion = conectar_db("localhost", "root", "pepa", "unagauchada");
-        $res = consultar_db_todas_columnas($conexion, "SELECT *, SUM(cantidad*valorActual) as 'Total' FROM compracredito WHERE $fechaInicio < fecha < $fechaFin  " );
+        $res = consultar_db_todas_columnas($conexion, "SELECT *, SUM(cantidad*valorActual) as 'Total' FROM compracredito WHERE fecha BETWEEN '$fechaInicio' AND '$fechaFin'" );
         return $res;
     }
 

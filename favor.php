@@ -149,8 +149,8 @@
                                 <input type="hidden" name="idUsuario" value="<?php echo $publicacion['idGaucho'] ?>">
                                 <select name="calificacion" id="calificacion"> 
                                     <option value="1">Bien</option> 
-                                    <option value="2">Neutro</option>
-                                    <option value="3">Mal</option>
+                                    <option value="3">Neutro</option>
+                                    <option value="2">Mal</option>
                                  </select>
                                 <button type="submit" name="calificarFavor" id="calificarFavor" tabindex="4" class="form-control btn btn-responder btn-xs "  value="Calificar">Calificar</button>
                               </form>

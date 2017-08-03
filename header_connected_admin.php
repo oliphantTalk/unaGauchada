@@ -37,8 +37,8 @@
 	  		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrador <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="verGanancias.php">Ver listado de ganancias</a></li>
-            <li><a href="comprarCredito.php">Ver ranking de usuarios</a></li>
+            <li><a href="ganancias.php">Ver listado de ganancias</a></li>
+            <li><a href="verRanking.php">Ver ranking de usuarios</a></li>
             <li><a href="listarCategorias.php">Listar categorías</a></li>
             <li><a href="listarReputacion.php">Listar reputación</a></li>
             <li role="separator" class="divider"></li>

@@ -85,7 +85,8 @@
 
 
     <tr>
-    	<td style="text-align: center;"><a href="verHistorialDelGaucho.php?idUsuario=<?php echo $usuario['idUsuario']?>"> <?php echo $usuario['nombre']. ' ' . $usuario['apellido'] ?> </a></td> 
+    	<td style="text-align: center; width: 200px;"><a href="verHistorialDelGaucho.php?idUsuario=<?php echo $usuario['idUsuario']?>"> <?php echo $usuario['nombre']. ' ' . $usuario['apellido'] ?> </a></td> 
+      <td style="text-align: center; width: 600px;"><?php echo $comentPostulante ?> </td> 
     	<td style="width: 50px;">
       <form action= elegirPostulante.php method="post">
       <input type="hidden" name="idGaucho" id="idGaucho" value="<?php echo $usuario['idUsuario']?>">
@@ -93,7 +94,7 @@
 
       <input type="submit" name="submit" id="submit" tabindex="4" class="form-control btn btn-responder btn-xs " style="" value="Aceptar"></td>
       </form>
-     <td style="text-align: center;"><?php echo $comentPostulante ?> </td> 
+     
 	</tr>
 
 

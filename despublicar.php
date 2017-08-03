@@ -13,11 +13,11 @@ if(isset($_SESSION['loggedin'])){
     if(empty($postulantes)){
         $consulta2= "UPDATE usuario SET cantCredito=(cantCredito + 1) WHERE idUsuario = '$idUsuario'";
         consultar_db($conexion,$consulta2);
-    }elseif($gaucho=null){
-            $consulta3= "UPDATE postulacion SET estado = 4 WHERE idPublicacion='$idFavor'  ";
+    }elseif($gaucho==null){
+            $consulta3= "UPDATE postulacion SET estado = 5 WHERE idPublicacion='$idFavor'  ";
             consultar_db($conexion,$consulta3);
     }else{
-        $consulta4= "UPDATE postulacion SET estado = 4  WHERE idPublicacion='$idFavor' AND idUsuario='$gaucho'";
+        $consulta4= "UPDATE postulacion SET estado = 5  WHERE idPublicacion='$idFavor' AND idUsuario='$gaucho'";
         consultar_db($conexion,$consulta4);
     }
     consultar_db($conexion, $consulta);
